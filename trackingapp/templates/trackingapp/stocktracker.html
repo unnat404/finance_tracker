@@ -1,0 +1,133 @@
+{% extends 'trackingapp/basic.html' %}
+{% load static %}
+{% block title %}
+StockTracker
+{% endblock %}
+{% block css %}
+<style>
+  .red {
+    color: red;
+  }
+
+  .green {
+    color: green;
+  }
+
+  .table-container {
+    overflow-x: scroll;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1>Live Stock Tracker</h1>
+  <div class="mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center breaking-news ">
+          <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news">
+            <span class="d-flex align-items-center">Selected Stocks</span></div>
+
+          <marquee class="news-scroll" behavior="scroll" direction="left">
+            <!-- <h4 class="name-scroll">{{selectedstock}}</h4> -->
+
+
+          </marquee>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="table-container">
+    <!-- -------------------------------- temp ------------------------------- -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- --------------------------------------------------------------- -->
+    
+
+  </div>
+  <br>
+  <div style="display:flex">
+  <div class="gap-2 me-2">
+    <a class="btn btn-primary" href="/" role="button">Home</a>
+  </div>
+  <div class="gap-2">
+    <a class="btn btn-danger" href="/" role="button">Reset</a>
+  </div>
+</div>
+</div>
+</div>
+<!-- <script>
+  const roomName = JSON.parse(document.getElementById('room-name').textContent);
+  var queryString = window.location.search;
+  queryString = queryString.substring(1);
+  console.log(queryString);
+  const stockSocket = new WebSocket(
+    'ws://' +
+    window.location.host +
+    '/ws/stock/' +
+    roomName +
+    '/' +
+    '?' +
+    queryString
+  );
+
+  stockSocket.onmessage = function (e) {
+    console.log(e.data);
+    const data = JSON.parse(e.data);
+    console.log(data);
+    for (const [key, value] of Object.entries(data)) {
+      var price = Number((value['Quote Price']).toFixed(4));
+      var prevprice = Number((value['Previous Close']).toFixed(4));
+      document.getElementById(key + '_price').innerHTML = price;
+      document.getElementById(key + '_prevprice').innerHTML = prevprice;
+      document.getElementById(key + '_open').innerHTML = value['Open'];
+      document.getElementById(key + '_cap').innerHTML = value['Market Cap'];
+      document.getElementById(key + '_vol').innerHTML = value['Volume'];
+      var change = document.getElementById(key + '_price').innerHTML - document.getElementById(key + '_prevprice')
+        .innerHTML;
+      change = Number((change).toFixed(4));
+      if (change > 0) {
+        document.getElementById(key + '_change').className = "green";
+        document.getElementById(key + '_change').innerHTML = "+" + change;
+      } else if (change < 0) {
+        document.getElementById(key + '_change').className = "red";
+        document.getElementById(key + '_change').innerHTML = change;
+      }
+    }
+  };
+</script> -->
+{% endblock %}
+
+{% block js %}
+<script>
+</script>
+{% endblock %}
